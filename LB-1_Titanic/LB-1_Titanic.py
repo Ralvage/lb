@@ -23,8 +23,7 @@ def impute_data(df):
     categorial_vars = list(df_copy.select_dtypes(include=['object']).columns.values)
     for col in categorial_vars:
         if(df_copy[col].isnull().values.any()):
-            df_copy[col].fillna(df_copy[col].mode()[0],inplace=True)
-            
+            df_copy[col].fillna(df_copy[col].mode()[0],inplace=True)      
     numerical_vars = list(df_copy.select_dtypes(include=['int64', 'float64']).columns.values)
     for col in numerical_vars:
         if(df_copy[col].isnull().values.any()):
@@ -41,8 +40,6 @@ train_full['Family_size'] = train_full['Parch'] + train_full['SibSp']
 test_full['Family_size'] = test_full['Parch'] + test_full['SibSp']
 
 train_full.head()
-
-
 
 (test_full['Sex'] == 'male')
 (test_full['Sex'] == 'male') & (test_full['Pclass'] == 3)
